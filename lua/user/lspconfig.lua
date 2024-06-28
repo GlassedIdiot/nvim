@@ -59,7 +59,7 @@ function M.config()
 		"zls",
 		"clangd",
     "nil_ls",
-    "tsserver"
+    "tsserver",
 		--"html",
 		--"tsserver",
 		-- "pyright",

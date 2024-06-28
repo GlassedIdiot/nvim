@@ -1,5 +1,8 @@
 local M = {
 	"nvimtools/none-ls.nvim",
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+  },
 }
 
 function M.config()
@@ -41,7 +44,7 @@ function M.config()
 				extra_filetypes = { "toml" , "nix"},
 				-- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 			}),
-			-- null_ls.builtins.diagnostics.eslint,
+      -- require("none-ls.diagnostics.eslint_d"),
 			null_ls.builtins.completion.spell,
 		},
 	})
