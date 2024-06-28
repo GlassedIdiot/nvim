@@ -11,6 +11,7 @@ M.servers = {
 	"marksman",
 	"gopls",
 	"zls",
+  "tsserver"
 
 }
 

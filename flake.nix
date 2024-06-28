@@ -1,19 +1,33 @@
+
+
 {
-  description = "My own Neovim flake";
+  description = "A lua dev Env for my development";
+
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-    };
-    neovim = {
-      url = "github:neovim/neovim?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = { self, nixpkgs, neovim }: {
-      packages.x86_64-linux.default = neovim.packages.x86_64-linux.neovim;
-      apps.x86_64-linux.default = {
-        type = "app";
-        program = "${neovim.packages.x86_64-linux.neovim}/bin/nvim";
-      };
-    };
+
+  outputs = { self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
+        defaultPackage = pkgs.mkShell{
+
+            buildInputs = with pkgs; 
+            [
+              lua 
+              nodejs_22
+              nodePackages_latest.prettier
+
+            ];
+            shellHook = ''
+            zsh
+            echo "Entering lua dev env"
+            '';
+          };
+      }
+    );
 }

@@ -58,8 +58,8 @@ function M.config()
 		"gopls",
 		"zls",
 		"clangd",
-    "nil_ls"
-		-- "cssls",
+    "nil_ls",
+    "tsserver"
 		--"html",
 		--"tsserver",
 		-- "pyright",
