@@ -1,5 +1,3 @@
-
-
 {
   description = "A lua dev Env for my development";
 
@@ -19,6 +17,7 @@
             buildInputs = with pkgs; 
             [
               lua 
+              lua-language-server
               nodejs_22
               nodePackages_latest.prettier
 
